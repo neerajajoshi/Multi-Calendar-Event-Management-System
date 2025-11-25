@@ -1,0 +1,69 @@
+Code status questionnaire:
+
+Please complete this questionnaire by selecting the appropriate answer for each question. Then include this file in the code that you send to your customers.
+
+1. Import/export:
+
+    - Script command to export a csv file: Y/N
+    - Exported CSV aligns with Google calendar specs: Y/N
+    - Import ics or ical file implementation: Y/N
+    - Script command to export a csv file: Y/N
+    - Exported CSV aligns with Google calendar specs: Y/N
+    - Exported ics or ical aligns with Google calendar specs: Y/N
+
+2. Multiple calendars:
+
+    - A user can create more than one calendar with different timezones: Y/N
+    - Script commands to support this feature: Y/N
+    - GUI supports this feature: Y/N
+    - Default calendars are supported in GUI: Y/N
+    - Calendars can be switched in GUI: Y/N
+    - Calendars can be switched with commands: Y/N
+    - Existing calendar's properties can be edited from GUI: Y/N
+    - Existing calendar's properties can be edited with commands: Y/N
+
+3. Events:
+    - Single events creation is implemented: Y/N
+    - Recurring events creation is implemented: Y/N
+    - Single events can be created with a text command: Y/N
+    - Recurring events can be created with a text command: Y/N
+    - Single events can be created in a calendar from GUI: Y/N
+    - Recurring events can be created in a calendar from GUI: Y/N
+
+    - Copy event from source to target calendar is implemented: Y/N
+    - Copy event from source to target calendar on a different date and timezone is implemented: Y/N
+    - Copy a series of events from source to target calendar is implemented: Y/N
+    - Copy events can be done via text commands: Y/N
+
+    - Editing single event properties is implemented: Y/N
+    - Editing recurring event properties is implemented: Y/N
+    - Editing single event properties via text command: Y/N
+    - Editing recurring event properties via GUI action: Y/N
+
+    - Querying days for events is implemented: Y/N
+    - Events on a day can be printed via a command: Y/N
+    - Events on a day can be displayed from GUI: Y/N
+
+4. Graphical Interface
+
+    - The GUI has a view to display the month view of a calendar: Y/N
+    - The GUI allows a user to select a calendar and change timezones: Y/N
+    - The GUI allows a user to navigate between months: Y/N
+    - The GUI allows a user to see the events on a day in selected calendar: Y/N
+    - The GUI allows a user to create different event types: Y/N
+    - The GUI allows a user to view created events: Y/N
+    - The view allows a user to modify existing events: Y/N
+
+4. Program:
+
+    - Program runs by running main? Y/N
+    - Program runs correctly in interactive mode? Y/N
+    - Program runs correctly in headless mode by providing a script file? Y/N
+    - Program opens expected and functional GUI in gui mode? Y/N
+
+5. Testing
+
+    - Have you written tests to verify every feature: Y/N
+    - Is your mutation coverage for model and controller 90\% or more: Y/N
+    - Is your test strength for model and controller 90\% or more: Y/N
+    - Is your branch coverage for model and controller 90\% or more: Y/N
