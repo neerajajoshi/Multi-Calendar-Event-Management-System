@@ -1,0 +1,66 @@
+# Valid commands for testing
+
+# Create multiple calendars with different timezones
+create calendar --name Work --timezone America/New_York
+create calendar --name Personal --timezone America/Los_Angeles
+create calendar --name Travel --timezone Europe/London
+
+# List all calendars
+list calendars
+
+# Edit calendar properties
+edit calendar --name Work --property name WorkCalendar
+edit calendar --name Personal --property timezone America/Denver
+
+# Use Work calendar and create events
+use calendar --name WorkCalendar
+create event "Team Meeting" from 2025-01-15T10:00 to 2025-01-15T11:00
+create event "Lunch Break" on 2025-01-15
+create event "Weekly Standup" from 2025-01-13T09:00 to 2025-01-13T09:30 repeats MW for 4 times
+
+# Use Personal calendar and create events
+use calendar --name Personal
+create event "Gym Session" from 2025-01-15T18:00 to 2025-01-15T19:00
+create event "Daily Exercise" on 2025-01-13 repeats MTWRF until 2025-01-31
+
+# Query events in different calendars
+print events on 2025-01-15
+print events from 2025-01-13T08:00 to 2025-01-15T20:00
+
+use calendar --name WorkCalendar
+print events on 2025-01-15
+
+# Copy events between calendars
+copy event Team Meeting on 2025-01-15T10:00 --target Personal to 2025-01-15T07:00
+copy events on 2025-01-15 --target Travel to 2025-01-20
+copy events between 2025-01-13 and 2025-01-15 --target Personal to 2025-01-25
+
+# Edit events
+edit event subject "Team Meeting" from 2025-01-15T10:00 with "Project Review"
+edit events location "Weekly Standup" from 2025-01-20T09:00 with "Room B"
+edit series description "Daily Exercise" from 2025-01-13T08:00 with "Morning workout routine"
+
+# Check results in different calendars
+use calendar --name Personal
+print events on 2025-01-15
+print events on 2025-01-25
+
+use calendar --name Travel
+print events on 2025-01-20
+
+# Check busy status
+use calendar --name WorkCalendar
+show status on 2025-01-15T10:30
+
+use calendar --name Personal
+show status on 2025-01-15T18:30
+
+# Export calendars in different formats
+use calendar --name WorkCalendar
+export cal work_calendar.csv
+export cal work_calendar.ics
+
+use calendar --name Personal
+export cal personal_calendar.ical
+
+exit

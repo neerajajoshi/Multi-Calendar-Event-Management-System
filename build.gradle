@@ -44,6 +44,16 @@ jacocoTestReport {
         xml.required = false
         csv.required = true
     }
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: [
+                '**/GuiCalendarView.class',
+                '**/GuiCalendarView$*.class',
+                '**/GuiCalendarController.class',
+                '**/GuiCalendarController$*.class'
+            ])
+        }))
+    }
 }
 
 test {
@@ -72,8 +82,10 @@ tasks.withType(Checkstyle) {
 
 // PIT Mutation Testing Configuration
 pitest {
-    targetClasses = ['calendar.**'] // Adjust to match your package structure
+    targetClasses = ['calendar.*' , 'controller.*', 'model.*', 'util.*','view.*'] // Adjust to match your package structure
     targetTests = ['*'] // Adjust to match your test package structure
+    excludedClasses = ['controller.GuiCalendarController', 'view.GuiCalendarView'] // Exclude GUI classes from mutation testing
+    excludedTestClasses = ['GuiCalendarViewTest', 'GuiCalendarControllerTest'] // Exclude GUI tests - cannot run in PIT environment
     pitestVersion = '1.15.8'
     threads = 4
     outputFormats = ['XML', 'HTML']
@@ -91,4 +103,6 @@ pitest {
     exportLineCoverage = true
     // Fail build if mutation score is below threshold
     failWhenNoMutations = false
+    // Add JVM arguments for headless mode
+    jvmArgs = ['-Djava.awt.headless=true']
 }

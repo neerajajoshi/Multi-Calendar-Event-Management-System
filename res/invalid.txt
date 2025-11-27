@@ -1,0 +1,48 @@
+# Commands with invalid commands mixed in
+
+# Valid calendar creation
+create calendar --name Work --timezone America/New_York
+create calendar --name Personal --timezone America/Los_Angeles
+
+# Invalid calendar commands
+create calendar --name Work --timezone America/New_York
+create calendar --name Invalid --timezone Invalid/Timezone
+create calendar --name
+edit calendar --name NonExistent --property name NewName
+edit calendar --name Work --property invalidprop value
+
+# Valid calendar usage
+use calendar --name Work
+create event "Valid Event" from 2025-01-15T10:00 to 2025-01-15T11:00
+create event "Series Event" from 2025-01-13T09:00 to 2025-01-13T09:30 repeats MW for 3 times
+
+# Invalid commands without calendar context
+use calendar --name NonExistent
+create event "No Calendar" from 2025-01-15T10:00 to 2025-01-15T11:00
+
+# Invalid event commands
+invalid command that should fail
+edit event invalidproperty "Valid Event" from 2025-01-15T10:00 with "New Value"
+edit event start "Valid Event" from 2025-01-15T10:00 with "invalid-time-format"
+create event "Bad Time" from 2025-01-15T25:00 to 2025-01-15T26:00
+
+# Valid commands
+use calendar --name Work
+create event "Another Valid Event" on 2025-01-16
+print events on 2025-01-15
+
+# Invalid copy commands
+copy event NonExistent on 2025-01-15T10:00 --target Personal to 2025-01-15T10:00
+copy events on 2025-01-15 --target NonExistent to 2025-01-20
+copy event
+copy events
+
+# Invalid query commands
+print events on invalid-date-format
+show status on not-a-datetime
+
+# Invalid export commands
+export cal
+export cal filename.unknown
+
+exit

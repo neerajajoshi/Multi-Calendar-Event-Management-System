@@ -1,150 +1,114 @@
+# Overview
 
-Working with other code (Part 4)
-================
+In this iteration of this project, you will build a view
+for the calendar application, featuring a graphical user interface.
+This will allow a user to interactively create,edit, and view events in
+a digital calendar. The result of this iteration will be a calendar that
+a user can interact with in a text-based interface, a GUI, as well as use scripting in headless mode.
 
-# 1 Context
+# 1 Graphical View
 
-This assignment gives you the experience of working with code that you did not write or design. The primary learning objective of this assignment is to understand code and design not written by you to the extent of implementing a new end-to-end feature using it. There are two secondary learning objectives. In sharing your code with another group you will attempt to communicate your ideas effectively to them, and answer questions posed by them as needed (i.e. do customer service). In addition you will be asking technically appropriate and precise questions to the group whose code you are working with. You will summarize your experience by critiquing the code given to you.
+## 1.1 General Constraints
 
-This assignment will be due in two parts, to ensure that each group is sending their code to another in a timely fashion, and receiving code in time to complete this assignment.
+1. You must use the Java Swing library to build the user interface of this application. To this end, you can use the examples discussed in the view module and any class in the official Java Swing library. You are not allowed to use any component or class that is not part of the JDK. 
 
-# 2 Prepare to send and receive code
+2. The GUI should, at a minimum, support a *month view* of a calendar. A month view shows all the days of the current month. A user can navigate to another month in the future or in the past. You are free to add more views (e.g., weekly view, days view, etc.).
 
-You will receive the contact details of two different groups from us: 
-one group that will give you their code (your provider) and another 
-to which you must send your code (your customer).
+3. The GUI must expose features listed and described in the next section.
 
-In order to prepare your code to your customer, please do the following:
+4. The GUI should have support for multiple calendars in any timezone chosen by the user.
 
-1. Complete the questionnaire in  "questionnaire.txt" included with the repository for this assignment in Pawtograder. This will summarize for your customer the status of your code (i.e. what works and what does not).
-2. Prepare a zip file with ONLY the following. DO NOT include any hidden files or folders such as .gitignore, .github, .git etc.
-	- the src/ directory
-	- the res/ directory
-	- the USEME markdown
-	- the README markdown
-	- build.gradle
-	- questionnaire.txt
+5. You are expected to handle invalid user input via the GUI gracefully. Graceful error handling means that you must detect the cause of the error and inform the user with a useful message that does not leak implementation details but lets the user know how to fix the error.
 
-As soon as you receive the details of your provider group, please contact them and request that they send you their code as soon as possible. Please be patient as sometimes it takes a day or two for them to respond.
+6. The layout of the UI should be reasonable. Things should be in proper proportion, and laid out in a reasonable manner. **Buttons/text fields/labels that are oversized, or haphazardly arranged, even if functional, will result in a point deduction.**
 
-As soon as you receive the details of your customer group, please send them the above zip promptly and request that they acknowledge they received it. Further, submit the code you sent along with the questionnaire to the Pawtograder assignment repo for Assignment 5 Part 1 by the due date. This submission
-documents and acknowledges that you have sent the code you were expected to send to the customer. Failing to submit part 1 will imply that you did not send the code you were expected to send.
+7. Each user interaction or user input must be reasonably user-friendly  (e.g. making the user type something when a less error-prone method is  possible is not good UI design). We do not expect snazzy, sophisticated  user-friendly programs. Our standard is: can a user unfamiliar with your code and technical documentation operate the program correctly **without reading your code and technical documentation?**
 
-# 3 Code Critique
+8. Keep in mind that this is a graphical user interface for your program.  It is not a graphical way to use the same interaction as the text mode. The expectations of the user, and what the user is expected to enter, are not the same as when specifying script commands!
 
-As customers of the providers' code, you have the opportunity to praise, critique, comment upon, and suggest improvements to their code. Write a short (8-10 paragraphs) review of their code. Your review should have the following sections: 
+## 1.2 Expected Feature Set
 
-- design critique. In this part you are expected to clearly explain BOTH the benefits and limitations of the design. To complement your explanation you must identify at least 3 code smells and  explain why they are applicable along with a brief explanation of how they can be refactored to remove the code smell. You can also identify a code smell and explain why it is reasonable to ignore the smell given the current design. For full credit the code smells you identify and explain cannot be trivial ones such as comments.
-- implementation critique. In this part you are expected to explain BOTH strengths and limitations of the implementation including choice of model representation and data structures used. You can argue from the perspective of non functional requirements such as performance, readability, maintainability, and extensibility.
-- documentation critique and constructive suggestions on how to address various limitations. 
+The following features must be usable via your graphical user interface.
 
-**Writing a disorganized review that is difficult to read will result in a point deduction, irrespective of its content**. 
+1. A user should be able to create a new calendar for a particular timezone.
 
-**Writing a review that is AI generated will result in an automatic 0 and further action based on the course's plagiarism policy. If your submission is flagged we will quiz you to explain your review and your review process**.
+2. A user should be able to select a calendar and create, edit, view events for the selected calendar.
 
+3. A user should know which calendar they are on when interacting with the GUI. The way you distinguish a calendar is upto you. One example would be to color code the different calendars.
 
-In short, you should provide a code review that is well-reasoned and well-argued using the SOLID principles learned in this course.
+4. A user should not be forced to create a new calendar. Instead, the GUI should allow a user to work with a default calendar in the user's current timezone based on their system setting.
 
-# 4 New Feature: calendar analytics
+5. A user should be able to select a specific day of a month and view all events scheduled on that day in the calendar's timezone.
 
-The users of our calendar app have requested for a new feature that
-will help them analyze and monitor their usage of the calendar app.
-To this end, they have requested to show a dashboard or summary view of
-the selected calendar in a particular date period with the following metrics:
+6. A user should be able to create a new event on a selected day of a month. The event can be a single or recurring event. For recurring events, a user should be able to specify the weekdays on which the event will repeat and the frequency in terms of number of occurrences or until an end date.
 
-- Total number of events
-- Total number of events by subject
-- Total number of events by weekdays
-- Total number of events by week
-- Total number of events by month
-- Average number of events per day
-- The busiest day and the least busy day
-- Percentage of events that were online and not online. An event is online if its location is online.
+7. A user should be able to select a specific day of a month and edit events.
 
-**Note all metrics (listed above) should be shown for a datetime interval selected by the user.**
-
-The analytics dashboard must be available in **both the GUI and the
-text interface**. For the GUI, you are free to select an appropriate
-layout as long as all the metrics are displayed clearly for the
-selected interval. For the text interface, you should
-support the following additional command:
-
-`show calendar dashboard from <dateString> to <dateString>`
-
-The `dateString` must be in `YYYY-MM-DD` format. Both dates are inclusive.
-
-On typing this command, the user should be able to see all metrics
-listed above in the interval specified by the user. 
-
-This command must always be typed after the `use calendar` command.
+The user should be able to identify a single event and edit it. The user should also be able to identify multiple events with the same name, possibly from a user-specific point in time, and edit them together.
 
 
-## 4.1 What to do
+## 1.3 Design Considerations
 
-1. Implement and test only the new features listed in the previous section.
+Carefully design the interaction between a view and a controller,
+and formalize the interactions with view and controller interfaces.
+You may design a single controller that manages the program in
+interactive, headless and GUI modes. Different controllers for different views are also possible if the views are very different from each other.
+However, be mindful of the MVC principles and separation between  the model, view and controller. When designing, always ask: "can I change one part with no/minimal changes to the others?"
 
-2. You should perform test coverage analysis to improve the tests you wrote. However, this is not a requirement for this assignment.
+## 1.4 Testing
 
-3. Add support for this new feature through the text interface using the above command.
+Think carefully about which parts of the program require testing. For example, you are not expected to test whether a particular button click produces the desired result. In that sense, testing the actual GUI is optional. However, you should test whether the controller does what it is supposed to in reaction to this happening.
 
-4. Add support for this new feature through the GUI appropriately.
+# 2 Program Execution
 
-4. Write a critique of the provided code.
+## 2.1 Creating a JAR File
 
-# 5 Code Issues
+A user should be able to run your application using a JAR file. To create a JAR file run the command ./gradlew jar. This will create a JAR file in the build/libs directory. You can run the jar using the command java -jar build/libs/JARNAME.jar. You can provide arguments after the jar file path.
 
-In general, if the code provided to you does not successfully implement a required feature you are not responsible for fixing it. Your providers should fix it and send you an update: it is OK to ask them to do so. Conversely you are expected to fix your code if a required feature does not work.
+You should assume that the user will run your program from this project's root. You must ensure that file paths that your program relies on are platform independent.
 
-However, you should not expect your providers to re-design their working code to make it "better" according to you.
+## 2.2 Command-line arguments
 
-If for some reason you do not get repaired code or explanations from your providers and this affects your ability to complete the required feature in this assignment, be sure to mention this in the USEME.
+Your program (from IntelliJ or the JAR file) should accept command-line inputs. Three command-line inputs are valid:
 
-Specifically, here are the guidelines for how to proceed with the given code. If in the code provided to you:
+* `java -jar JARNAME.jar --mode headless path-of-script-file`: when invoked in this manner the program should open the script file, execute it and then exit. Invalid commands should be handled gracefully with appropriate error messages. This is how the program worked in the previous iteration.
 
-1. text interface and the GUI work, implement the new features and expose through text interface and the GUI (most straightforward).
+* `java -jar JARNAME.jar --mode interactive`: when invoked in this manner the program should open in an interactive text mode, allowing the user to type the script and execute it one line at a time. This is how the program worked in the previous iteration.
 
-2. the text interface works but GUI does not: implement new features and expose through text interface. Ask providers to fix the GUI enough for you to display the dashboard, and then add the dashboard feature to the GUI. If you were not able to completely expose through the GUI, mention in USEME.
+* `java -jar JARNAME.jar`: when invoked in this manner the program should open the graphical user interface. This is what will happen if you simply double-click on the jar file.
 
-3. If the code works, text interface and GUI somewhat works or does not work at all, implement the new feature and try to add the new text command. Ask the provider to fix the GUI, so you can add the dashboard. If unable to complete, mention in USEME.
+Any other command-line arguments are invalid: in these cases the program should display an error message suitably and quit.
 
-4. If nothing works (no GUI, no script, even model is unworkable), such that you cannot even implement the new features: contact your professor, and we will assign you another provider.
+# 3 What to submit
 
-Use your judgment to determine if you should wait for your providers to fix something, or for you to temporarily fix it to make progress. **You should not simply wait for your providers to fix problems shown by you, and then claim you could not complete the assignment because you were waiting for them.**
+- Submit a res/ folder with the following:
+  - A screenshot showing your GUI. 
+  - A `Misc.md` file with the following information:
+    - `A list of changes to the design of your program, along with a brief justification of each. **Describing changes only in paragraph form will result in a point deduction.**
+    - Which features work and which do not. 
+    - Anything else you need us to know when we grade.
+  - A txt file, commands.txt, with the list of valid commands.
+  - A txt file, invalid.txt with a list of commands where at least one command is invalid.
+- A USEME.md file that contains:
+  - Instructions to run your program in different modes using examples.
+  - a bullet-point list of how to use your GUI to use each operation supported by your program. Screenshots would be helpful, but not necessary.
+- The main method must be in the class 'src/main/java/CalendarRunner.java'.
+- Complete the [anonymous peer evaluation survey](https://forms.gle/11qoosf7ukmVFWuT9). You do not need to take the survey if you are working alone.
 
-# 6 Grading Standards
+# Grading Criteria
 
-For this assignment, you will be graded on the following:
+1. The completeness, layout, and behavior of your GUI.
 
-1. The coherence and thoroughness of your review. Remember your review must be constructive so that a reader can read it, understand the strengths and limitations of the design, and take actionable steps to improve their design if required.
+2. Whether your design aligns with MVC and SOLID principles.
 
-2. The correctness of the new feature implemented.
+3. Whether you have addressed issues in the previous version.
 
-3. The completeness and correctness of the corresponding tests.
+4. Well-structured and clean code with relevant documentation.
 
-In general, you will not be penalized for bugs in the code sent to you (with the exception of style which you may have to fix). If this has hampered your ability to complete the assignment, please describe so explicitly in your submission. If your submission is found to not work, with no explanation as to why, we will assume that you are responsible for its problems. All related explanation should go in the USEME.
+5. Avoid code smells wherever relevant.
 
-You will not be graded (much) on the code you send to your customers. It will simply be style-checked, and worth a small portion of your overall grade for the assignment, to ensure that you submit something we can compare against your customers' use of your code.
+6. Completeness and correctness of your tests as evidenced by running them and coverage metrics for the controller and model.
 
-Your grade will generally not be affected by your customers' review of your code. Your grade may be affected by your responsiveness (or lack thereof) and experience with your customers.
+7. Proper access modifiers.
 
-# 7 Submission Requirements for Part 1 (This Assignment)
-
-Submit the code you sent to your customer. For full credit you only
-need to pass style and make sure you submitted the questionnaire.
-Successful submission here will serve as acknowledgement that you sent the code you were expected to send to your customer.
-
-# 8 Submission Requirements for Part 2
-
-The instructions below apply to part 2 of the assignment, that is, a separate Pawtograder repository.
-
-- Submit all files necessary to make your code work (this includes the code you got from your providers, with code you wrote for this assignment).
-- A USEME markdown 
-  - with instructions to run your program in different modes using examples.
-  - instructions on how to test the newly added feature to the GUI. Add screenshots if it helps.
-  - Explanation of bugs (if any) in sent code that hampered your ability to complete the requested features.
-- Submit a `res/` folder with the following:
-  - A screenshot showing the new feature in the GUI
-  - A txt file, `commands.txt`, with the list of valid commands including the newly added commands.
-  - A txt file, `invalid.txt` with a list of commands where at least one invalid command is a newly added command.
-  - A markdown file `CHANGES` that specifically describes how you implemented the dashboard features to be in harmony with the design given to you (i.e. how you managed to fit the new feature in the existing design). Also indicate at the top of this file if you were able to implement the dashboard correctly, supported a text command for it and exposed it through the GUI (in the same style as the questionnaire you sent to your customers).
-  - A markdown file `REVIEW` that documents your code critique.
+8. Expected formatting style.
