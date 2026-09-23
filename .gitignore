@@ -41,3 +41,8 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### Calendar Export Files ###
+*.ical
+*.ics
+*.csv

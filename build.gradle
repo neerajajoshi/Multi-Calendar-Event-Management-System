@@ -13,6 +13,10 @@ repositories {
     mavenCentral()
 }
 
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
 sourceSets {
     test {
         java {
@@ -85,7 +89,7 @@ pitest {
     targetClasses = ['calendar.*' , 'controller.*', 'model.*', 'util.*','view.*'] // Adjust to match your package structure
     targetTests = ['*'] // Adjust to match your test package structure
     excludedClasses = ['controller.GuiCalendarController', 'view.GuiCalendarView'] // Exclude GUI classes from mutation testing
-    excludedTestClasses = ['GuiCalendarViewTest', 'GuiCalendarControllerTest'] // Exclude GUI tests - cannot run in PIT environment
+    excludedTestClasses = ['GuiCalendarViewTest', 'GuiCalendarControllerTest', 'CalendarRunnerTest'] // Exclude GUI and Runner tests
     pitestVersion = '1.15.8'
     threads = 4
     outputFormats = ['XML', 'HTML']
