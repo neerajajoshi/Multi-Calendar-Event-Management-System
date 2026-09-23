@@ -1,28 +1,28 @@
-# 📅 Multi-Calendar Event Management System
+# Multi-Calendar Event Management System
 
 An extensible, cross-platform calendar and schedule management system built in Java using modern **Model-View-Controller (MVC)** and **Command** design patterns. It supports multi-calendar management with automatic timezone conversions, recurring event series, flexible edit/delete scopes, iCalendar (.ics/.ical) and CSV export, and three distinct execution modes: **Graphical User Interface (Swing GUI)**, **Interactive CLI**, and **Headless Script Execution**.
 
 ---
 
-## 🌟 Key Features
+## Key Features
 
-- 🕒 **Multi-Calendar & Timezone Conversion**: Manage multiple calendars simultaneously with distinct timezones. Events automatically convert times when copied across timezones.
-- 🔁 **Flexible Recurring Event Series**: Schedule single, all-day, and repeating events (specified by days of the week, occurrence limits, or end dates).
-- 🎯 **Fine-Grained Edit & Delete Scopes**:
+-  **Multi-Calendar & Timezone Conversion**: Manage multiple calendars simultaneously with distinct timezones. Events automatically convert times when copied across timezones.
+-  **Flexible Recurring Event Series**: Schedule single, all-day, and repeating events (specified by days of the week, occurrence limits, or end dates).
+-  **Fine-Grained Edit & Delete Scopes**:
   - *This event only* (single occurrence)
   - *This and future events* (forward-propagating series update)
   - *All events in series* (entire recurring series)
-- ⚡ **High-Performance LRU Caching**: In-memory caching for sub-millisecond date queries and conflict detection.
-- 📤 **Standard iCalendar & CSV Export**: Export schedules to `.ics` / `.ical` (RFC 5545 compatible) and tabular `.csv` formats.
-- 🖥️ **Three Execution Interfaces**:
+-  **High-Performance LRU Caching**: In-memory caching for sub-millisecond date queries and conflict detection.
+-  **Standard iCalendar & CSV Export**: Export schedules to `.ics` / `.ical` (RFC 5545 compatible) and tabular `.csv` formats.
+-  **Three Execution Interfaces**:
   - **Swing GUI**: Clean, interactive desktop experience.
   - **Interactive CLI**: Real-time terminal command interface.
   - **Headless Mode**: High-speed batch processing from script files.
-- 🧪 **High Quality & Test Coverage**: 97%+ Line Coverage and 92%+ PIT Mutation Testing score.
+-  **High Quality & Test Coverage**: 97%+ Line Coverage and 92%+ PIT Mutation Testing score.
 
 ---
 
-## 📸 GUI Walkthrough & Screenshots
+## GUI Walkthrough & Screenshots
 
 ### 1. Main Calendar View & Navigation
 Month-view grid with visual indicators for today (blue highlight), selected days (blue outline), and event dates (green dots).
@@ -95,7 +95,7 @@ The compiled JAR will be located at `build/libs/calendar-1.0.jar`.
 
 ---
 
-## 🎮 How to Run
+## How to Run
 
 ### Mode 1: Graphical User Interface (GUI)
 Run without arguments to launch the desktop UI:
@@ -139,7 +139,7 @@ java -jar build/libs/calendar-1.0.jar --mode headless res/commands.txt
 
 ---
 
-## 📋 Command Reference
+## Command Reference
 
 | Action | Command Syntax |
 | :--- | :--- |
@@ -161,7 +161,7 @@ java -jar build/libs/calendar-1.0.jar --mode headless res/commands.txt
 
 ---
 
-## 🏗️ Architecture & Design Patterns
+## Architecture & Design Patterns
 
 ```mermaid
 graph TD
@@ -182,7 +182,7 @@ graph TD
 
 ---
 
-## 🧪 Testing & Code Quality
+## Testing & Code Quality
 
 ### Running Unit Tests & Jacoco Coverage
 ```powershell
@@ -199,7 +199,7 @@ Reports mutation coverage (mutants killed vs. survived) at:
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```text
 ├── src/
@@ -218,7 +218,7 @@ Reports mutation coverage (mutants killed vs. survived) at:
 
 ---
 
-## 👥 Authors & Acknowledgments
+## Authors & Acknowledgments
 
 - **Neeraja Joshi** & **Binary Blossoms Team**
 - Northeastern University — CS 5010 Program Design Paradigm
